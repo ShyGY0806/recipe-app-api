@@ -1,3 +1,3 @@
 # recipe-app-api
 
-Recipe API project using python and Django
+Recipe API project using python and Django..
