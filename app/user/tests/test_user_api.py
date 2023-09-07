@@ -24,7 +24,7 @@ class PublicUserApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    def test_create_user_sucess(self):
+    def test_create_user_success(self):
         """Test creating user is successful"""
         payload = {
             'email': 'test@example.com',
@@ -88,7 +88,7 @@ class PublicUserApiTests(TestCase):
         """Test return errors if credentials are invalid"""
         create_user(email='test@example.com', password='goodpass')
 
-        payload = {'email':'test@example.com', 'password': 'badpass'}
+        payload = {'email': 'test@example.com', 'password': 'badpass'}
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertNotIn('token', res.data)
