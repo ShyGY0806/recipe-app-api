@@ -1,5 +1,5 @@
 """
-Serializers for the user API View
+Serializers for the user API View.
 """
 from django.contrib.auth import (
     get_user_model,
@@ -37,7 +37,7 @@ class AuthTokenSerializer(serializers.Serializer):
         password = attrs.get('password')
         user = authenticate(
             request=self.context.get('request'),
-            user=email,
+            username=email,
             password=password,
         )
         if not user:
