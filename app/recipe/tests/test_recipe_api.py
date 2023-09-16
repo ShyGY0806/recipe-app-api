@@ -152,7 +152,7 @@ class PrivateRecipeAPITests(TestCase):
             'price': Decimal('2.50'),
         }
         url = detail_url(recipe.id)
-        res = self.client.patch(url, payload)
+        res = self.client.put(url, payload)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         recipe.refresh_from_db()
