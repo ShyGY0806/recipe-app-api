@@ -322,7 +322,10 @@ class PrivateRecipeAPITests(TestCase):
 
     def test_create_recipe_with_existing_ingredients(self):
         """Test creating recipe with existing ingredients"""
-        ingredient_salt = Ingredient.objects.create(user=self.user, name='Salt')
+        ingredient_salt = Ingredient.objects.create(
+            user=self.user,
+            name='Salt'
+        )
         payload = {
             'title': 'Cauliflower Tacos',
             'time_minutes': 60,
@@ -359,11 +362,17 @@ class PrivateRecipeAPITests(TestCase):
 
     def test_update_recipe_assign_ingredient(self):
         """Test assigning an existing ingredient when updating a ingredient"""
-        ingredient_sugar = Ingredient.objects.create(user=self.user, name='Sugar')
+        ingredient_sugar = Ingredient.objects.create(
+            user=self.user,
+            name='Sugar'
+        )
         recipe = create_recipe(user=self.user)
         recipe.ingredients.add(ingredient_sugar)
 
-        ingredient_salt = Ingredient.objects.create(user=self.user, name='Salt')
+        ingredient_salt = Ingredient.objects.create(
+            user=self.user,
+            name='Salt'
+        )
         payload = {'ingredients': [{'name': 'Salt'}]}
         url = detail_url(recipe.id)
         res = self.client.patch(url, payload, format='json')
@@ -374,7 +383,10 @@ class PrivateRecipeAPITests(TestCase):
 
     def test_clear_recipe_ingredients(self):
         """Test clearing a recipe ingredient"""
-        ingredient_sugar = Ingredient.objects.create(user=self.user, name='Sugar')
+        ingredient_sugar = Ingredient.objects.create(
+            user=self.user,
+            name='Sugar'
+        )
         recipe = create_recipe(user=self.user)
         recipe.ingredients.add(ingredient_sugar)
 
