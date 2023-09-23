@@ -416,7 +416,7 @@ class PrivateRecipeAPITests(TestCase):
         r2.tags.add(tag2)
         r3 = create_recipe(user=self.user, title='Fish and chips')
 
-        params = {'tag': f'{tag1.id},{tag2.id}'}
+        params = {'tags': f'{tag1.id},{tag2.id}'}
         res = self.client.get(RECIPES_URL, params)
 
         s1 = RecipeSerializer(r1)
@@ -436,7 +436,7 @@ class PrivateRecipeAPITests(TestCase):
         r2.ingredients.add(ingredient2)
         r3 = create_recipe(user=self.user, title='Fish and chips')
 
-        params = {'ingredient': f'{ingredient1.id},{ingredient2.id}'}
+        params = {'ingredients': f'{ingredient1.id},{ingredient2.id}'}
         res = self.client.get(RECIPES_URL, params)
 
         s1 = RecipeSerializer(r1)
